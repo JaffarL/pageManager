@@ -49,7 +49,6 @@ class Table{
 			let tempte = document.createElement('tr');
 			for(let j=0;j<this.columnNum;j++){
 				let tempth = document.createElement('th')
-				console.log(this.data[i][j])
 				tempth.innerText = this.data[i][j]
 				tempth.setAttribute('id',i.toString()+j.toString())
 				tempte.appendChild(tempth)
