@@ -25,13 +25,14 @@ class Table{
 		let temp = (pageNum-1)*this.rowNum;
 		let tempArr = [];
 		for(let i=0;i<this.rowNum;i++){
-			tempArr.push(this.data[i])
+			tempArr.push(this.data[i+temp])
 		}
 		return tempArr;
 	}
 
 	update(param){
-		data = groupData(param)
+		const data = this.groupData(param)
+		console.log(data);
 		try{
 			if(data.length>this.rowNum) throw('data length overflow');
 		}catch(e){

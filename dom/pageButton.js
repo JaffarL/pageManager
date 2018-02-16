@@ -71,6 +71,7 @@ class pageButton{
 					console.log(target.id)
 					break;
 				default:
+					tableObj.update(target.id[0])
 					console.log(target.id)
 					//func call;
 			}
