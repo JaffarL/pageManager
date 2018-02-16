@@ -10,13 +10,28 @@ class Table{
 	constructor(options){
 		this.rowNum = options.num;
 		this.pageNum = options.arr.length/this.rowNum||0;
+		this.pageNum = Math.ceil(this.pageNum);
 		this.columnName = options.title||"";
 		this.columnNum = this.columnName.length;
 		this.targetDiv = document.getElementById(options.str);
 		this.data = options.arr;
 	}
 
-	update(data){
+	getPageNum(){
+		return this.pageNum;
+	}
+
+	groupData(pageNum){
+		let temp = (pageNum-1)*this.rowNum;
+		let tempArr = [];
+		for(let i=0;i<this.rowNum;i++){
+			tempArr.push(this.data[i])
+		}
+		return tempArr;
+	}
+
+	update(param){
+		data = groupData(param)
 		try{
 			if(data.length>this.rowNum) throw('data length overflow');
 		}catch(e){
@@ -62,13 +77,4 @@ class Table{
 }
 
 
-let arr = {
-	title:['name','age','size'],
-	arr:[['lyz','18','18'],['xyq','18','C']],  
-	str:'test',
-	num:2
-}
-let date =[['lyz','19','18'],['xyq','19','C']]
-let table = new Table(arr);
-table.create();
-table.update(date);
+
